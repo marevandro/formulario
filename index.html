@@ -1,1 +1,72 @@
-<!DOCTYOE html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Formulario</title>
+    </head>
+    <body>
+        <label for="campo3">Data de Nascimento</label>
+        <input oninput="mascara(this, 'data')" id="campo3" type="text" 
+        class="form-control" placeholder="Ex.: dd/mm/aaaa" autocomplete="off" name="customer['birthdate']">
+        <br>
+        <label for="campo4">CPF</label>
+        <input oninput="mascara(this, 'cpf')" id="campo4" type="text" 
+        class="form-control" placeholder="Ex.: xxx.xxx.xxx-xx" autocomplete="off" name="customer['cpf']">
+        <br>
+        <label for="campo5">CNPJ</label>
+        <input oninput="mascara(this, 'cnpj')" id="campo5" type="text" 
+        class="form-control" placeholder="Ex.: xx.xxx.xxx/xxxx-xx" autocomplete="off" name="customer['cnpj']">
+        <br>
+        <label for="campo6">CEP</label>
+        <input oninput="mascara(this, 'cep')" id="campo6" type="text" 
+        class="form-control" placeholder="Ex.: xxxxx-xxx" autocomplete="off" name="customer['cep']">
+        <br>
+        <label for="campo7">Telefone</label>
+        <input oninput="mascara(this, 'tel')" id="campo7" type="text" 
+        class="form-control" placeholder="Ex.: xxxxx-xxxx" autocomplete="off" name="customer['tel']">
+        <script>
+            function mascara(i,t){
+   
+                var v = i.value;
+                
+                if(isNaN(v[v.length-1])){
+                    i.value = v.substring(0, v.length-1);
+                    return;
+                }
+                
+                if(t == "data"){
+                    i.setAttribute("maxlength", "10");
+                    if (v.length == 2 || v.length == 5) i.value += "/";
+                }
+
+                if(t == "cpf"){
+                    i.setAttribute("maxlength", "14");
+                    if (v.length == 3 || v.length == 7) i.value += ".";
+                    if (v.length == 11) i.value += "-";
+                }
+
+                if(t == "cnpj"){
+                    i.setAttribute("maxlength", "18");
+                    if (v.length == 2 || v.length == 6) i.value += ".";
+                    if (v.length == 10) i.value += "/";
+                    if (v.length == 15) i.value += "-";
+                }
+
+                if(t == "cep"){
+                    i.setAttribute("maxlength", "9");
+                    if (v.length == 5) i.value += "-";
+                }
+
+                if(t == "tel"){
+                    if(v[0] == 9){
+                        i.setAttribute("maxlength", "10");
+                        if (v.length == 5) i.value += "-";
+                    }else{
+                        i.setAttribute("maxlength", "9");
+                        if (v.length == 4) i.value += "-";
+                    }
+                }
+                }
+        </script>
+    </body>
+</html>
