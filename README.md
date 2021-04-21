@@ -1,2 +1,2 @@
-# formulario
-Formulário usando mascaras para preenchimento das informações.
+# formularios
+Formulário usando mascaras para cadastro de colaboradores.
