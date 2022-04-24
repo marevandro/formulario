@@ -1,72 +1,80 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Formulario</title>
-    </head>
-    <body>
-        <label for="campo3">Data de Nascimento</label>
-        <input oninput="mascara(this, 'data')" id="campo3" type="text" 
-        class="form-control" placeholder="Ex.: dd/mm/aaaa" autocomplete="off" name="customer['birthdate']">
-        <br>
-        <label for="campo4">CPF</label>
-        <input oninput="mascara(this, 'cpf')" id="campo4" type="text" 
-        class="form-control" placeholder="Ex.: xxx.xxx.xxx-xx" autocomplete="off" name="customer['cpf']">
-        <br>
-        <label for="campo5">CNPJ</label>
-        <input oninput="mascara(this, 'cnpj')" id="campo5" type="text" 
-        class="form-control" placeholder="Ex.: xx.xxx.xxx/xxxx-xx" autocomplete="off" name="customer['cnpj']">
-        <br>
-        <label for="campo6">CEP</label>
-        <input oninput="mascara(this, 'cep')" id="campo6" type="text" 
-        class="form-control" placeholder="Ex.: xxxxx-xxx" autocomplete="off" name="customer['cep']">
-        <br>
-        <label for="campo7">Telefone</label>
-        <input oninput="mascara(this, 'tel')" id="campo7" type="text" 
-        class="form-control" placeholder="Ex.: xxxxx-xxxx" autocomplete="off" name="customer['tel']">
-        <script>
-            function mascara(i,t){
-   
-                var v = i.value;
-                
-                if(isNaN(v[v.length-1])){
-                    i.value = v.substring(0, v.length-1);
-                    return;
-                }
-                
-                if(t == "data"){
-                    i.setAttribute("maxlength", "10");
-                    if (v.length == 2 || v.length == 5) i.value += "/";
-                }
+<html lang="en">
 
-                if(t == "cpf"){
-                    i.setAttribute("maxlength", "14");
-                    if (v.length == 3 || v.length == 7) i.value += ".";
-                    if (v.length == 11) i.value += "-";
-                }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
 
-                if(t == "cnpj"){
-                    i.setAttribute("maxlength", "18");
-                    if (v.length == 2 || v.length == 6) i.value += ".";
-                    if (v.length == 10) i.value += "/";
-                    if (v.length == 15) i.value += "-";
-                }
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet">
+</head>
 
-                if(t == "cep"){
-                    i.setAttribute("maxlength", "9");
-                    if (v.length == 5) i.value += "-";
-                }
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Criar uma conta</h2>
+        </div>
+        <!--Caixa de input, texto e incone de erro-->
+        <form id="form" class="form">
+            <div class="form-control">
+                <!--Label, texto que fica descrito acima do input-->
+                <label for="username">Nome de usuário</label>
+                <input type="text" id="username" / placeholder="Digite seu nome de usuário...">
+                <!--Os 2 'i', um para o icone de erro e o outro para o icone de sucesso-->
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <!--Small, mensagem de erro-->
+                <small>Mensagem de erro</small>
+            </div>
 
-                if(t == "tel"){
-                    if(v[0] == 9){
-                        i.setAttribute("maxlength", "10");
-                        if (v.length == 5) i.value += "-";
-                    }else{
-                        i.setAttribute("maxlength", "9");
-                        if (v.length == 4) i.value += "-";
-                    }
-                }
-                }
-        </script>
-    </body>
+            <div class="form-control">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Digite seu email.." />
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+              </div>
+
+              <div class="form-control">
+                <label for="password">Senha</label>
+                <input type="password"
+                  id="password"
+                  placeholder="Digite sua senha..."
+                />
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+              </div>
+
+
+              <div class="form-control">
+                <label for="password-confirmation">Confirmação de senha</label>
+                <input
+                  type="password"
+                  id="password-confirmation"
+                  placeholder="Digite sua senha novamente..."
+                />
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+              </div>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+    </div>
+
+    <script
+    src="https://kit.fontawesome.com/f9e19193d6.js"
+    crossorigin="anonymous"
+  ></script>
+
+    <script src="./script.js"></script>
+</body>
+
 </html>
